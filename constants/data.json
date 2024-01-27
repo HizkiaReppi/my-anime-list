@@ -1,0 +1,92 @@
+[
+	{
+		"mal_id": 1,
+		"title": "Naruto",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 2,
+		"title": "Boruto",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 3,
+		"title": "One Peace",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 4,
+		"title": "Gintama",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 5,
+		"title": "Bleach: Sennen Kessen-hen",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 6,
+		"title": "Koe no Katachi",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 7,
+		"title": "Sousou no Frieren",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 8,
+		"title": "Gintama: The Final",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 9,
+		"title": "Fruits Basket: The Final",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	},
+	{
+		"mal_id": 10,
+		"title": "Ginga Eiyuu Densetsu",
+		"images": {
+			"webp": {
+				"image_url": "https://cdn.myanimelist.net"
+			}
+		}
+	}
+]
