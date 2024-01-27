@@ -2,20 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-img {
-	transition: 0.3s ease all;
-	-webkit-transition: 0.3s ease all;
-	-moz-transition: 0.3s ease all;
-	-ms-transition: 0.3s ease all;
-	-o-transition: 0.3s ease all;
-}
-
-img:hover {
-	scale: 101%;
-}
-
 @layer base {
 	section {
 		@apply mb-10;
 	}
+
+	img {
+		transition: 0.3s ease all;
+		-webkit-transition: 0.3s ease all;
+		-moz-transition: 0.3s ease all;
+		-ms-transition: 0.3s ease all;
+		-o-transition: 0.3s ease all;
+	}
+
+	img:hover {
+		transform: scale(1.01);
+	}
+}
+
+@layer components {
+}
+
+@layer utilities {
 }
