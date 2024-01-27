@@ -7,49 +7,66 @@ export const GET = async request => {
 	const page = parseInt(searchParams.get('page') || 1);
 	const limit = parseInt(searchParams.get('limit') || 5);
 
-	const anime = await prisma.anime.findMany({
-		take: limit,
-		skip: limit * (page - 1),
-	});
+	try {
+		const anime = await prisma.anime.findMany({
+			take: limit,
+			skip: limit * (page - 1),
+		});
 
-	return new NextResponse(
-		JSON.stringify({
-			message: 'Get Data Success',
-			status: 200,
-			data: anime.map(data => {
-				return {
-					mal_id: data.id,
-					title: data.title,
-					images: {
-						webp: {
-							image_url: data.Image,
+		return NextResponse.json(
+			{
+				message: 'Get Data Success',
+				status: 200,
+				data: anime.map(data => {
+					return {
+						mal_id: data.id,
+						title: data.title,
+						images: {
+							webp: {
+								image_url: data.Image,
+							},
 						},
-					},
-				};
-			}),
-			meta: {
-				limit,
-				page,
+					};
+				}),
+				meta: {
+					limit,
+					page,
+				},
 			},
-		}),
-	);
+			{ status: 200 },
+		);
+	} catch (err) {
+		console.error(err);
+		return NextResponse.json(
+			{ message: 'Internal Server Error', status: 500 },
+			{ status: 500 },
+		);
+	}
 };
 
-export const POST = async request => {
-	const data = await request.json();
+export const POST = async req => {
+	try {
+		const request = new NextRequest(req);
 
-	const createAnime = await prisma.anime.create({ data });
-	if (!createAnime) {
-		return new NextResponse(
-			JSON.stringify({ message: "Something Wen't Wrong", status: 500 }),
-		);
-	} else {
-		return new NextResponse(
-			JSON.stringify({
+		const body = await request.body();
+
+		const data = JSON.parse(body);
+
+		const createAnime = await prisma.anime.create({ data });
+
+		return NextResponse.json(
+			{
 				message: 'Create Anime Success',
 				status: 201,
 				data: createAnime,
-			}),
+			},
+			{ status: 201 },
+		);
+	} catch (error) {
+		console.error(err);
+		return NextResponse.json(
+			{ message: 'Invalid Request', status: 400 },
+			{ status: 400 },
 		);
 	}
 };
