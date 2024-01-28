@@ -3,21 +3,17 @@ import Header from '@/components/Header';
 
 export default async function Search({ params }) {
 	const { keyword } = params;
+	const decodedKeyword = decodeURI(keyword);
 	const response = await fetch(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${keyword}`,
+		`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?q=${decodedKeyword}`,
 	);
-	// const response = await fetch(
-	// 	`http://localhost:3000/api/anime/search?q=${keyword}`,
-	// 	{
-	// 		method: 'GET',
-	// 	},
-	// );
+
 	const anime = await response.json();
 
 	return (
 		<>
 			<section>
-				<Header title={`Pencarian: ${keyword}`} />
+				<Header title={`Pencarian: ${decodedKeyword}`} />
 				<AnimeList api={anime} />
 			</section>
 		</>
