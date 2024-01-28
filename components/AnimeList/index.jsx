@@ -7,8 +7,7 @@ const AnimeList = ({ api }) => {
 	return (
 		<div className='flex flex-wrap justify-center items-center'>
 			<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
-				{api.data.map(data => {
-					console.log(data);
+				{api.data?.map(data => {
 					return (
 						<Card
 							key={data.mal_id}
@@ -22,7 +21,6 @@ const AnimeList = ({ api }) => {
 									className='w-full max-h-80 object-cover rounded-t-lg'
 								/>
 							)}>
-							
 							<h3 className='text-base md:text-xl font-bold tracking-tight text-gray-900 dark:text-white'>
 								<Link
 									href={`/anime/${data.mal_id}`}
