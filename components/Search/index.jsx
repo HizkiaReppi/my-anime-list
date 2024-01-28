@@ -11,13 +11,15 @@ const Search = () => {
 
 	const handleSearch = event => {
 		const keyword = searchRef.current.value;
+		const formattedKeyword = keyword.replace(/\s+/g, '-').toLowerCase();
+		const decodedKeyword = encodeURIComponent(formattedKeyword);
 
 		if (event.key === 'Enter' || event.type === 'click') {
 			event.preventDefault();
 			if (keyword.length < 1) {
 				router.push(`/`);
 			} else {
-				router.push(`/search/${keyword}`);
+				router.push(`/search/${decodedKeyword}`);
 			}
 		}
 	};
@@ -31,6 +33,7 @@ const Search = () => {
 			placeholder='Cari Anime'
 			onKeyDown={handleSearch}
 			className='w-full md:w-80'
+			autoComplete='off'
 		/>
 	);
 };

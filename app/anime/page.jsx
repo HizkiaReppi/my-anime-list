@@ -4,20 +4,25 @@ import { useEffect, useState } from 'react';
 import AnimeList from '@/components/AnimeList';
 import HeaderMenu from '@/components/Utilities/HeaderMenu';
 import Pagination from '@/components/Utilities/Pagination';
+import { getData } from '@/libs/api';
 
 export default function Anime() {
 	const [page, setPage] = useState(1);
 	const [anime, setAnime] = useState([]);
 
-	const fetchData = async () => {
-		const animeResponse = await fetch(
-			`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?page=${page}&limit=20&order_by=popularity&status=airing`,
-		);
-		const data = await animeResponse.json();
-		setAnime(data);
-	};
-
 	useEffect(() => {
+		const fetchData = async () => {
+			const data = await getData('/anime', {
+				params: {
+					page,
+					limit: 20,
+					order_by: 'popularity',
+					status: 'airing',
+				},
+			});
+			setAnime(data);
+		};
+
 		fetchData();
 	}, [page]);
 

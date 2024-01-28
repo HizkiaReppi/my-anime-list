@@ -1,16 +1,21 @@
 import AnimeList from '@/components/AnimeList';
 import Header from '@/components/Header';
+import { getData } from '@/libs/api';
 
 export default async function Home() {
-	const animeResponse = await fetch(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=8`,
-	);
-	const topAnime = await animeResponse.json();
+	const topAnime = await getData('/top/anime', {
+		params: {
+			limit: 8,
+		},
+	});
 
-	const allAnimeResponse = await fetch(
-		`${process.env.NEXT_PUBLIC_API_BASE_URL}/anime?limit=8&order_by=popularity&status=airing`,
-	);
-	const anime = await allAnimeResponse.json();
+	const anime = await getData('/anime', {
+		params: {
+			limit: 8,
+			order_by: 'popularity',
+			status: 'airing',
+		},
+	});
 
 	return (
 		<>
