@@ -15,10 +15,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en'>
-			<body
-				className={`${poppins.className} bg-white dark:bg-slate-900`}
-				suppressHydrationWarning={true}>
+		<html
+			lang='en'
+			suppressHydrationWarning={true}>
+			<body className={`${poppins.className} bg-white dark:bg-slate-900`}>
 				<Providers>
 					<Navbar />
 					<main className='mx-7 md:mx-10 my-7'>{children}</main>
