@@ -1,6 +1,7 @@
 import './globals.css';
-import Navbar from '@/components/Navbar';
 import { Poppins } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import Providers from './providers';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -16,10 +17,12 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
 			<body
-				className={`${poppins.className}`}
+				className={`${poppins.className} bg-white dark:bg-slate-900`}
 				suppressHydrationWarning={true}>
-				<Navbar />
-				<main className='mx-7 md:mx-10 my-3'>{children}</main>
+				<Providers>
+					<Navbar />
+					<main className='mx-7 md:mx-10 my-7'>{children}</main>
+				</Providers>
 			</body>
 		</html>
 	);

@@ -1,6 +1,7 @@
 'use client';
 
 import { MagnifyingGlass } from '@phosphor-icons/react';
+import { TextInput } from 'flowbite-react';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
@@ -22,24 +23,15 @@ const Search = () => {
 	};
 
 	return (
-		<div className='relative'>
-			<input
-				ref={searchRef}
-				type='text'
-				placeholder='Search Anime'
-				className='w-full md:w-80 border-0 rounded bg-gray-900 py-2 px-4 text-white'
-				onKeyDown={handleSearch}
-			/>
-			<button
-				type='button'
-				className='absolute top-1 end-3'
-				onClick={handleSearch}>
-				<MagnifyingGlass
-					size={30}
-					className='text-gray-100'
-				/>
-			</button>
-		</div>
+		<TextInput
+			ref={searchRef}
+			id='search'
+			type='text'
+			icon={MagnifyingGlass}
+			placeholder='Cari Anime'
+			onKeyDown={handleSearch}
+			className='w-full md:w-80'
+		/>
 	);
 };
 

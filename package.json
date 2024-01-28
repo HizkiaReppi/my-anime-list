@@ -15,6 +15,7 @@
 		"flowbite-react": "^0.7.2",
 		"next": "14.1.0",
 		"next-auth": "^4.24.5",
+		"next-themes": "^0.2.1",
 		"react": "^18",
 		"react-dom": "^18",
 		"react-youtube": "^10.1.0"

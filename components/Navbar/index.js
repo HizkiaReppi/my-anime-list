@@ -1,20 +1,36 @@
-import Search from '@/components/Search';
+'use client';
+
 import Link from 'next/link';
+import {
+	Navbar,
+	NavbarBrand,
+	NavbarToggle,
+	NavbarCollapse,
+} from 'flowbite-react';
+import Search from '@/components/Search';
+import ThemeSwitch from '@/components/ThemeSwitch';
 
-const Navbar = () => {
+const Component = () => {
 	return (
-		<header className='sticky top-0 left-0 z-10 px-3 md:px-10 bg-gray-700 shadow-lg'>
-			<div className='flex flex-col md:flex-row gap-2 md:items-center justify-between p-4'>
-				<Link
-					href='/'
-					className='font-semibold text-white text-lg md:text-xl'>
+		<Navbar
+			rounded
+			className='sticky top-0 left-0 px-7 md:px-10 shadow-lg z-10'>
+			<NavbarBrand
+				as={Link}
+				href='/'>
+				<span className='self-center whitespace-nowrap text-xl font-semibold dark:text-white'>
 					AnimeList
-				</Link>
-
-				<Search />
-			</div>
-		</header>
+				</span>
+			</NavbarBrand>
+			<NavbarToggle />
+			<NavbarCollapse>
+				<div className='flex justify-between items-center gap-5'>
+					<Search />
+					<ThemeSwitch />
+				</div>
+			</NavbarCollapse>
+		</Navbar>
 	);
 };
 
-export default Navbar;
+export default Component;
