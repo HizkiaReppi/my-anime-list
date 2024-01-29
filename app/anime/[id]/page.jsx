@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import { Tooltip } from 'flowbite-react';
 import Rating from '@/components/Rating';
-import Detail from '@/components/DetailAnime';
+import TableDetail from '@/components/TableDetailAnime';
 import Popular from '@/components/Utilities/Popular';
 import Ranking from '@/components/Utilities/Ranking';
 import MembersAnime from '@/components/Utilities/MembersAnime';
 import VideoPlayer from '@/components/Utilities/VideoPlayer';
+import TextDetailAnime from '@/components/TextDetailAnime';
 import { getData } from '@/libs/api';
 
 export default async function DetailAnime({ params: { id } }) {
@@ -64,11 +66,9 @@ export default async function DetailAnime({ params: { id } }) {
 	return (
 		<>
 			{anime.data?.trailer?.youtube_id && (
-				<>
-					<div className='px-4 py-2 h-full w-full'>
-						<VideoPlayer youtubeId={anime.data?.trailer?.youtube_id} />
-					</div>
-				</>
+				<div className='px-4 py-2 h-full w-full'>
+					<VideoPlayer youtubeId={anime.data?.trailer?.youtube_id} />
+				</div>
 			)}
 			<div className='px-4 py-2'>
 				<h2 className='text-2xl font-semibold'>
@@ -80,16 +80,24 @@ export default async function DetailAnime({ params: { id } }) {
 				</h2>
 			</div>
 			<div className='px-4 flex items-center gap-3 text-2xl overflow-x-auto'>
-				<Ranking ranking={anime.data?.rank} />
+				<Tooltip content='Ranking'>
+					<Ranking ranking={anime.data?.rank} />
+				</Tooltip>
 				<span className='font-medium text-sm'>|</span>
-				<Popular popularity={anime.data?.popularity} />
+				<Tooltip content='Popularity'>
+					<Popular popularity={anime.data?.popularity} />
+				</Tooltip>
 				<span className='font-medium text-sm'>|</span>
-				<Rating
-					score={anime.data?.score}
-					scoredBy={anime.data?.scored_by}
-				/>
+				<Tooltip content='Score'>
+					<Rating
+						score={anime.data?.score}
+						scoredBy={anime.data?.scored_by}
+					/>
+				</Tooltip>
 				<span className='font-medium text-sm'>|</span>
-				<MembersAnime members={anime.data?.members} />
+				<Tooltip content='Members'>
+					<MembersAnime members={anime.data?.members} />
+				</Tooltip>
 				<span className='font-medium text-sm'>|</span>
 				<p className='font-semibold text-xs md:text-sm text-center'>
 					{anime.data?.episodes} Episode
@@ -103,23 +111,19 @@ export default async function DetailAnime({ params: { id } }) {
 					height={250}
 					className='max-w-96 md:max-w-72 max-h-96 md:max-h-80 md:w-1/3 lg:w-1/5 rounded object-cover'
 				/>
-				<Detail details={details} />
+				<TableDetail details={details} />
 			</div>
-			<div className='px-4 py-5 flex flex-col gap-4'>
-				<h3 className='font-semibold text-2xl'>Sinopsis</h3>
-				<hr className='border-2 border-slate-900 dark:border-slate-700 mb-2' />
-				<p className='text-base md:text-lg text-justify leading-relaxed'>
-					{anime.data?.synopsis}
-				</p>
-			</div>
+			{anime.data?.synopsis && (
+				<TextDetailAnime
+					title='Sinopsis'
+					detail={anime.data?.synopsis}
+				/>
+			)}
 			{anime.data?.background && (
-				<div className='px-4 py-5 flex flex-col gap-4'>
-					<h3 className='font-semibold text-2xl'>Background</h3>
-					<hr className='border-2 border-slate-900 dark:border-slate-700 mb-2' />
-					<p className='text-base md:text-lg text-justify leading-relaxed'>
-						{anime.data?.background}
-					</p>
-				</div>
+				<TextDetailAnime
+					title='Background'
+					detail={anime.data?.background}
+				/>
 			)}
 		</>
 	);

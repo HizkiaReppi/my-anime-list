@@ -7,7 +7,7 @@ const DetailAnime = ({ details }) => {
 						<tr
 							key={index}
 							className='transition-all duration-300'>
-							<td className='p-4 border-b border-r-2 border-slate-300 font-bold'>
+							<td className='p-4 border-b border-r border-slate-300 font-bold'>
 								{detail.label}:
 							</td>
 							<td className='p-4 border-b border-slate-300'>
