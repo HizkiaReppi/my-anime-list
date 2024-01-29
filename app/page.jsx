@@ -28,7 +28,7 @@ export default async function Home() {
 					linkHref='/anime/populer'
 					linkTitle='Lihat Semua'
 				/>
-				{topAnime.data.length !== 0 ? (
+				{topAnime?.data?.length !== 0 ? (
 					<AnimeList api={topAnime} />
 				) : (
 					<p className='text-center font-semibold text-lg'>Tidak ada data</p>
@@ -40,7 +40,7 @@ export default async function Home() {
 					linkHref='/anime'
 					linkTitle='Lihat Semua'
 				/>
-				{anime.data.length !== 0 ? (
+				{anime?.data?.length !== 0 ? (
 					<AnimeList api={anime} />
 				) : (
 					<p className='text-center font-semibold text-lg'>Tidak ada data</p>
@@ -48,7 +48,7 @@ export default async function Home() {
 			</section>
 			<section>
 				<Header title='Rekomendasi Anime' />
-				{recommendedAnime.data.length !== 0 ? (
+				{recommendedAnime?.data?.length !== 0 ? (
 					<AnimeList api={recommendedAnime} />
 				) : (
 					<p className='text-center font-semibold text-lg'>Tidak ada data</p>

@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import {
 	Navbar,
@@ -9,6 +7,7 @@ import {
 } from 'flowbite-react';
 import Search from '@/components/Search';
 import ThemeSwitch from '@/components/ThemeSwitch';
+import UserActionButton from '@/components/UserActionButton';
 
 const Component = () => {
 	return (
@@ -22,7 +21,10 @@ const Component = () => {
 					AnimeList
 				</span>
 			</NavbarBrand>
-			<NavbarToggle />
+			<div className='flex md:order-2'>
+				<UserActionButton />
+				<NavbarToggle />
+			</div>
 			<NavbarCollapse>
 				<div className='flex justify-between items-center gap-5'>
 					<Search />

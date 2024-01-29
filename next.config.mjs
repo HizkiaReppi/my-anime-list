@@ -5,6 +5,9 @@ const nextConfig = {
 			{
 				hostname: 'cdn.myanimelist.net',
 			},
+			{
+				hostname: 'lh3.googleusercontent.com',
+			},
 		],
 	},
 };

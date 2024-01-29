@@ -24,5 +24,5 @@ export const reproduceData = (data, gap = 8) => {
 	const first = Math.floor(Math.random() * (data.length - gap));
 	const last = first + gap;
 
-	return { data: data.slice(first, last) };
+	return { data: data?.slice(first, last) };
 };
