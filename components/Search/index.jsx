@@ -11,10 +11,12 @@ const Search = () => {
 
 	const handleSearch = event => {
 		const keyword = searchRef.current.value;
-		const formattedKeyword = keyword.replace(/\s+/g, '-').toLowerCase();
+		if (keyword.trim() === '') return;
+
+		const formattedKeyword = keyword.trim().replace(/\s+/g, '-').toLowerCase();
 		const decodedKeyword = encodeURIComponent(formattedKeyword);
 
-		if (event.key === 'Enter' || event.type === 'click') {
+		if (event.key === 'Enter') {
 			event.preventDefault();
 			if (keyword.length < 1) {
 				router.push(`/`);
