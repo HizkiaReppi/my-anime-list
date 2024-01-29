@@ -7,12 +7,12 @@ import { ArrowUp } from '@phosphor-icons/react';
 const ScrollToTop = () => {
 	const [visible, setVisible] = useState(false);
 
-	window.addEventListener('scroll', () => {
-		setVisible(window.scrollY > window.innerHeight);
+	addEventListener('scroll', () => {
+		setVisible(scrollY > innerHeight);
 	});
 
 	const scrollToTop = () => {
-		window.scrollTo({
+		scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		});
