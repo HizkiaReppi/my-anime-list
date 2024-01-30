@@ -10,8 +10,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id      String  @id @default(uuid())
+  name    String?
+  email   String  @unique
+  password String
+  image   String?
+  Anime   Anime[]
+}
+
 model Anime {
-  id      String  @id @default(cuid())
+  id      String  @id @default(uuid())
   title   String
-  Image   String?
+  image   String?
+  userId  String?
+  User    User?   @relation(fields: [userId], references: [id])
 }

@@ -1,9 +1,6 @@
-import './globals.css';
+import '../globals.css';
 import { Poppins } from 'next/font/google';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ScrollToTop from '@/components/Utilities/ScrollToTop';
-import Providers from './providers';
+import Providers from '../providers';
 
 const poppins = Poppins({
 	subsets: ['latin'],
@@ -21,12 +18,11 @@ export default function RootLayout({ children }) {
 			lang='en'
 			suppressHydrationWarning={true}>
 			<body
-				className={`${poppins.className} bg-white dark:bg-slate-900 flex flex-col min-h-screen`}>
+				className={`${poppins.className} bg-white dark:bg-slate-900 flex justify-center items-center min-h-screen`}>
 				<Providers>
-					<Navbar />
-					<main className='mx-7 md:mx-10 my-7 flex-grow'>{children}</main>
-					<Footer />
-					<ScrollToTop />
+					<main className='p-10 bg-gray-50 dark:bg-slate-800 shadow-lg w-[500px] rounded-lg'>
+						{children}
+					</main>
 				</Providers>
 			</body>
 		</html>
